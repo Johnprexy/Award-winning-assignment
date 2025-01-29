@@ -1,6 +1,6 @@
 #!/bin/bash
 
-# The Function to validate numeric input
+# Function to validate numeric input
 validate_input() {
     local num=$1
     if ! [[ "$num" =~ ^[0-9]+$ ]]; then
@@ -9,7 +9,7 @@ validate_input() {
     fi
 }
 
-# To Get input either from argument or prompt
+# Get input either from argument or prompt
 if [ $# -eq 0 ]; then
     read -p "Enter a number: " number
 elif [ $# -gt 1 ]; then
@@ -21,10 +21,11 @@ fi
 
 validate_input "$number"
 
-# To Calculate factorial
+# Calculate factorial
 factorial=1
 for (( i=1; i<=number; i++ )); do
     factorial=$(( factorial * i ))
 done
 
+# Output directly to stdout (will be captured by the pipeline)
 echo "Factorial of $number is: $factorial"

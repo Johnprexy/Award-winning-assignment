@@ -14,9 +14,9 @@ jobs:
       - uses: actions/checkout@v4
       
       - name: Run factorial script
+        id: factorial
         run: |
           chmod +x factorial.sh
-          ./factorial.sh ${{ github.event.inputs.number }}
-      
-      - name: Show Result
-        run: echo "Factorial calculation complete"
+          output=$(./factorial.sh ${{ github.event.inputs.number }})
+          echo "RESULT=$output" >> $GITHUB_OUTPUT
+          echo "$output"  # This will show in the pipeline logs
