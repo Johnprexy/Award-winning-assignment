@@ -27,4 +27,6 @@ for (( i=1; i<=number; i++ )); do
     factorial=$(( factorial * i ))
 done
 
+# Output to both console and file
 echo "Factorial of $number is: $factorial"
+echo "Factorial of $number is: $factorial" > result.txt
