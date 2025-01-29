@@ -11,14 +11,14 @@ jobs:
   calculate:
     runs-on: ubuntu-latest
     steps:
-    - name: Checkout repository
-      uses: actions/checkout@v4
+      - name: Checkout repository
+        uses: actions/checkout@v4
 
-    - name: Run factorial script
-      id: factorial
-      run: |
-        chmod +x factorial.sh
-        ./factorial.sh "${{ github.event.inputs.number }}"
+      - name: Run factorial script
+        id: factorial
+        run: |
+          chmod +x factorial.sh
+          ./factorial.sh "${{ github.event.inputs.number }}"
 
-    - name: Show Result
-      run: echo "Result: $(cat result.txt)"
+      - name: Show Result
+        run: echo "Result: $(cat result.txt)"
