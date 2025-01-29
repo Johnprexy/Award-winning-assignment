@@ -1,21 +1,28 @@
 #!/bin/bash
 
-# To Check if exactly one argument is provided
-if [ $# -ne 1 ]; then
-    echo "Error: Please provide exactly one number as an argument."
+# Function to validate numeric input
+validate_input() {
+    local num=$1
+    if ! [[ "$num" =~ ^[0-9]+$ ]]; then
+        echo "Error: Input must be a non-negative integer"
+        exit 1
+    fi
+}
+
+# Get input either from argument or prompt
+if [ $# -eq 0 ]; then
+    read -p "Enter a number: " number
+elif [ $# -gt 1 ]; then
+    echo "Error: Too many arguments. Provide one number or none for interactive mode."
     exit 1
+else
+    number=$1
 fi
 
-# To Check if the input is a non-negative integer
-if ! [[ $1 =~ ^[0-9]+$ ]]; then
-    echo "Error: The input must be a non-negative integer."
-    exit 1
-fi
+validate_input "$number"
 
-number=$1
+# Calculate factorial
 factorial=1
-
-# To Calculate factorial
 for (( i=1; i<=number; i++ )); do
     factorial=$(( factorial * i ))
 done
