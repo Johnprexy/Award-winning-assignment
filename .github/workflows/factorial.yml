@@ -18,7 +18,7 @@ jobs:
       id: factorial
       run: |
         chmod +x factorial.sh
-        ./factorial.sh "${{ inputs.number }}"
+        ./factorial.sh "${{ github.event.inputs.number }}"
 
     - name: Show Result
       run: echo "Result: $(cat result.txt)"
